@@ -36,6 +36,15 @@ $ npm install
 ```
 $ npm install -g @nestjs/cli
 ```
+## Example to .env file
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=donadev
+DB_PASSWORD=password
+DB_NAME=ecotransforma
+JWT_SECRET=tucontraseñasupersecreta
+```
 ## Compile and run the project
 
 ```bash
