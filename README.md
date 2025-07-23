@@ -29,8 +29,13 @@
 
 ```bash
 $ npm install
+
 ```
 
+## Install Nest CLI
+```
+$ npm install -g @nestjs/cli
+```
 ## Compile and run the project
 
 ```bash
