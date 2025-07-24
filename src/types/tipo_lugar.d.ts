@@ -1,0 +1,1 @@
+export type tipo_lugar = 'Barrio' | 'Conjunto Residencial / Edificio'| 'Empresa / Lugar de Trabajo' | 'Institución Educativa';

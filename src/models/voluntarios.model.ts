@@ -15,7 +15,7 @@ interface VolunteersCreationAttributes
   extends Optional<VolunteersAttributes, 'id_volunteer'> {}
 
 @Table({ tableName: 'volunteers', timestamps: false })
-export class Voluntario
+export class Volunteers
   extends Model<VolunteersAttributes, VolunteersCreationAttributes>
   implements VolunteersAttributes
 {

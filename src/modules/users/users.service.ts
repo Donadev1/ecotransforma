@@ -3,7 +3,7 @@ import { UsersRepository } from './user.repository';
 import { CreateUserDto } from './dto/createuser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
 import { Users } from 'src/models/users.model';
-
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
@@ -30,8 +30,19 @@ export class UsersService {
 
   // Crear nuevo usuario
   async create(userData: CreateUserDto): Promise<Users> {
-    return this.usersRepository.create(userData);
-  }
+  
+    const { contrasena, ...restoDatos } = userData;
+  
+    const hashedPassword = await bcrypt.hash(contrasena, 10);
+  
+    const nuevoUsuario = await this.usersRepository.create({
+    ...restoDatos,
+    contrasena: hashedPassword,
+  
+  });
+
+  return nuevoUsuario;
+}
 
   // Actualizar usuario por ID
   async update(id_user: number, userData: UpdateUserDto): Promise<Users> {

@@ -3,7 +3,8 @@ import databaseConfig from './database.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Users } from 'src/models/users.model';
-import { Voluntario } from 'src/models/voluntarios.model';
+import {  Volunteers } from 'src/models/voluntarios.model';
+import { ActivityRequest } from 'src/models/activity-request.model';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Voluntario } from 'src/models/voluntarios.model';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        //console.log(configService.get('database')); // 👈 para verificar si se carga
+        //console.log(configService.get('database')); // para verificar si se carga
         return {
           dialect: 'postgres',
           host: configService.get<string>('database.host'),
@@ -24,7 +25,7 @@ import { Voluntario } from 'src/models/voluntarios.model';
           password: configService.get<string>('database.password'),
           database: configService.get<string>('database.database'),
           autoLoadModels: true,
-          models: [Users, Voluntario],
+          models: [Users, Volunteers, ActivityRequest],
           synchronize: false,
         };
       },

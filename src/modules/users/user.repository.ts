@@ -7,6 +7,7 @@ import { UpdateUserDto } from './dto/updateUser.dto';
 @Injectable()
 export class UsersRepository {
   constructor(
+
     @InjectModel(Users)
     private readonly usersModel: typeof Users,
   ) {}
@@ -33,10 +34,7 @@ export class UsersRepository {
     return this.usersModel.create(userData);
   }
 
-  async update(
-    id_user: number,
-    userData: UpdateUserDto,
-  ): Promise<Users | null> {
+  async update(id_user: number, userData: UpdateUserDto): Promise<Users | null> {
     const [affectedCount] = await this.usersModel.update(userData, {
       where: { id_user },
     });

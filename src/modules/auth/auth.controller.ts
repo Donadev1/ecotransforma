@@ -2,8 +2,6 @@ import {
   Controller,
   Post,
   Body,
-  HttpException,
-  HttpStatus,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/createuser.dto';
@@ -17,7 +15,6 @@ export class AuthController {
     async login(@Body() data: LoginDto) {
         return this.authService.login(data);
 }
-
 
   
   @Post('register')

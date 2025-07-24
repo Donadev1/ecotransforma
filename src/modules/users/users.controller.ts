@@ -1,13 +1,17 @@
-import {Controller,Get,Post,Put,Delete,Body,Param,ParseIntPipe,HttpException,HttpStatus} from '@nestjs/common';
+import {Controller,Get,Post,Put,Delete,Body,Param,ParseIntPipe,HttpException,HttpStatus, UseGuards} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createuser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
+import { JwtAuthGuard } from '../auth/guards/auth/auth.guard';
+import { RolesGuard } from '../auth/guards/roles/roles.guard';
+import { Roles } from '../auth/decorators/roles/roles.decorator';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // Obtener todos los usuarios
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Get()
   async findAll() {
     try {
@@ -20,7 +24,8 @@ export class UsersController {
     }
   }
 
-  // Obtener usuario por ID
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Get(':id')
   async findById(@Param('id', ParseIntPipe) id: number) {
     try {
@@ -33,7 +38,8 @@ export class UsersController {
     }
   }
 
-  // Obtener usuario por email (si lo usas como endpoint directo)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Get('email/:email')
   async findByEmail(@Param('email') email: string) {
     try {
@@ -47,6 +53,8 @@ export class UsersController {
   }
 
   // Crear nuevo usuario
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     try {
@@ -60,6 +68,8 @@ export class UsersController {
   }
 
   // Actualizar usuario
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Put(':id')
   async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto ) {
     try {
@@ -73,6 +83,8 @@ export class UsersController {
   }
 
   // Eliminar usuario
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('administrador')
   @Delete(':id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     try {

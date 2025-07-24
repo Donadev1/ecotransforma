@@ -9,24 +9,17 @@ import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { Users } from 'src/models/users.model';
 import { CreateUserDto } from '../users/dto/createuser.dto';
-import { dot } from 'node:test/reporters';
 import LoginDto from './dto/LoginDto';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
   ) {}
 
-  // Valida credenciales de login
   async validateUser(email: string, contrasena: string): Promise<Users> {
-    
     const user = await this.usersService.findByEmail(email);
-
-    //depracion
-     //console.log('Usuario encontrado:', user);
-     //console.log('Password recibido:', contrasena);
 
     if (!user) {
       throw new UnauthorizedException('Credenciales inválidas');
@@ -41,11 +34,12 @@ export class AuthService {
     return user;
   }
 
-  async login(dto:LoginDto) {
+  async login(dto: LoginDto) {
     try {
       const user = await this.validateUser(dto.email, dto.contrasena);
 
       const payload = {
+        sub: user.id_user, 
         username: user.nombre,
         rol: user.rol,
       };
@@ -53,6 +47,7 @@ export class AuthService {
       return {
         access_token: this.jwtService.sign(payload),
         user: {
+          id: user.id_user,
           nombre: user.nombre,
           rol: user.rol,
         },
