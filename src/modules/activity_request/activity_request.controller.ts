@@ -26,7 +26,7 @@ export class ActivityRequestController {
         return await this.activityService.findById(id_request);
     }
 
-    
+    //aqui no va los guards porque este seria el que consumirias en el front despues no te dejaria enviarlo si no estas logueado    
     @Post()
     async createActivity(@Body()createActivity:ActivityRequestDto){
         return await this.activityService.createActivity(createActivity);
