@@ -8,7 +8,8 @@ export interface VolunteersAttributes {
   phone: string;
   email: string;
   address: string;
-  disponibilidad_dias: string;
+  disponibilidad_dias: string[];
+  mensaje?: string
 }
 
 interface VolunteersCreationAttributes
@@ -23,17 +24,20 @@ export class Volunteers
   declare id_volunteer: number;
 
   @Column({ type: DataType.STRING(50), allowNull: false })
-  nombre!: string;
+  declare nombre: string;
 
-  @Column({ type: DataType.STRING(15), allowNull: false })
-  phone!: string;
+  @Column({ type: DataType.STRING(20), allowNull: false })
+  declare phone: string;
 
   @Column({ unique: true, type: DataType.STRING(100), allowNull: false })
-  email!: string;
+  declare email: string;
 
   @Column({ type: DataType.TEXT, allowNull: false })
-  address!: string;
+  declare address: string;
 
   @Column({ type: DataType.ARRAY(DataType.TEXT), allowNull: false })
-  disponibilidad_dias!: string;
+  declare disponibilidad_dias: string[];
+
+  @Column({ type: DataType.STRING, allowNull:true})
+  declare mensaje?: string;
 }
