@@ -7,9 +7,10 @@ import { AdminModule } from './modules/admin/admin.module';
 import { UsersModule } from './modules/users/users.module';
 import { ActivityRequestModule } from './modules/activity_request/activity_request.module';
 import { VolunteersModule } from './modules/volunteers/volunteers.module';
+import { PersonsModule } from './modules/persons/persons.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule],
+  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule, PersonsModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import databaseConfig from './database.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { SequelizeModule, SequelizeModuleOptions } from '@nestjs/sequelize';
 import { Users } from 'src/models/users.model';
-import {  Volunteers } from 'src/models/voluntarios.model';
+import { Volunteers } from 'src/models/voluntarios.model';
 import { ActivityRequest } from 'src/models/activity-request.model';
+import { Persons } from 'src/models/persons.model';
+import { PersonsModule } from 'src/modules/persons/persons.module';
+
 
 @Module({
   imports: [
@@ -15,8 +18,9 @@ import { ActivityRequest } from 'src/models/activity-request.model';
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => {
-        //console.log(configService.get('database')); // para verificar si se carga
+      useFactory: async (
+        configService: ConfigService
+      ): Promise<SequelizeModuleOptions> => {
         return {
           dialect: 'postgres',
           host: configService.get<string>('database.host'),
@@ -25,7 +29,7 @@ import { ActivityRequest } from 'src/models/activity-request.model';
           password: configService.get<string>('database.password'),
           database: configService.get<string>('database.database'),
           autoLoadModels: true,
-          models: [Users, Volunteers, ActivityRequest],
+          models: [Users, Volunteers, ActivityRequest, Persons],
           synchronize: false,
         };
       },

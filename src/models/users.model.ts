@@ -1,6 +1,9 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
 import { Rol } from '../types/rol';
 import { Optional } from 'sequelize';
+import { Persons } from './persons.model';
+
+
 
 export interface UsersAttributes {
   id_user: number;
@@ -19,7 +22,7 @@ interface UsuarioCreationAttributes extends Optional<UsersAttributes, 'id_user'>
   createdAt: 'creado_en',
   updatedAt: false,
 })
-export class Users extends Model<UsersAttributes, UsuarioCreationAttributes> {
+export class Users extends Model<UsersAttributes, UsuarioCreationAttributes> implements UsersAttributes{
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   declare id_user: number;
 
@@ -40,6 +43,10 @@ export class Users extends Model<UsersAttributes, UsuarioCreationAttributes> {
 
   @Column({ type: DataType.DATE, allowNull: true })
   declare creado_en?: Date;
+
+
+  @HasOne(() => Persons, { foreignKey: 'user_id' })
+  declare persons?:Persons;
 }
 
 
