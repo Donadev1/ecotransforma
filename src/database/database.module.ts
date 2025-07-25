@@ -6,7 +6,7 @@ import { Users } from 'src/models/users.model';
 import { Volunteers } from 'src/models/voluntarios.model';
 import { ActivityRequest } from 'src/models/activity-request.model';
 import { Persons } from 'src/models/persons.model';
-import { PersonsModule } from 'src/modules/persons/persons.module';
+
 
 
 @Module({
