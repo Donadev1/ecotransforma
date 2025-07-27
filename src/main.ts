@@ -1,20 +1,27 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common'; // ← Agregar esta importación
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // ← AGREGAR ESTA CONFIGURACIÓN
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
+  }));
+
   // Habilitar CORS para desarrollo local y producción
   app.enableCors({
     origin: [
-      'http://localhost:3000',             // Frontend local
-      'https://tu-proyecto.vercel.app'     // Frontend en Vercel (reemplaza con tu dominio real)
+      'http://localhost:3000',
+      'https://tu-proyecto.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true
   });
 
-  // Escuchar en el puerto definido por Render o por defecto 3000
   const port = parseInt(process.env.PORT ?? '3000', 10);
   await app.listen(port);
   console.log(`🚀 App running on http://localhost:${port}`);

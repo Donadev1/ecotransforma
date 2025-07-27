@@ -30,6 +30,8 @@ export class PersonsController {
             @Roles('administrador')
             @Post()
             async CreatePerson(@Body() createPerson:CreatePersonDto){
+                 console.log('=== CONTROLLER ===');
+                 console.log('Body recibido:', createPerson);
                 return await this.personService.CreatePerson(createPerson);
             }
 
