@@ -2,6 +2,7 @@ import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
 import { Rol } from '../types/rol';
 import { Optional } from 'sequelize';
 import { Persons } from './persons.model';
+import { Community } from './community.model';
 
 
 
@@ -47,6 +48,9 @@ export class Users extends Model<UsersAttributes, UsuarioCreationAttributes> imp
 
   @HasOne(() => Persons, { foreignKey: 'user_id' })
   declare persons?:Persons;
+
+  @HasOne(()=> Community, {foreignKey: 'user_id'})
+  declare community?:Community
 }
 
 

@@ -6,6 +6,7 @@ import { Users } from 'src/models/users.model';
 import { Volunteers } from 'src/models/voluntarios.model';
 import { ActivityRequest } from 'src/models/activity-request.model';
 import { Persons } from 'src/models/persons.model';
+import { Community } from 'src/models/community.model';
 
 
 
@@ -29,7 +30,7 @@ import { Persons } from 'src/models/persons.model';
           password: configService.get<string>('database.password'),
           database: configService.get<string>('database.database'),
           autoLoadModels: true,
-          models: [Users, Volunteers, ActivityRequest, Persons],
+          models: [Users, Volunteers, ActivityRequest, Persons, Community],
           synchronize: false,
         };
       },

@@ -74,7 +74,7 @@ export class VolunteersService {
         const success = await this.volunteerRepository.findByIdVolunteer(id_volunteer);
         if (!success) {
           throw new NotFoundException(
-            `No se pudo eliminar el usuario con ID ${id_volunteer}`,
+            `No existe el voluntario con ID ${id_volunteer}`,
           );
         }
         return await this.volunteerRepository.DeleteVolunteer(id_volunteer)

@@ -6,11 +6,16 @@ import { Users } from 'src/models/users.model';
 import { UsersRepository } from './user.repository';
 import { AuthModule } from '../auth/auth.module';
 import { Persons } from 'src/models/persons.model';
+import { Community } from 'src/models/community.model';
+import { PersonsModule } from '../persons/persons.module';
+import { CommunityModule } from '../community/community.module';
 
 @Module({
   imports: [
-    SequelizeModule.forFeature([Users,Persons]),
-    forwardRef(() => AuthModule)
+    SequelizeModule.forFeature([Users,Persons,Community]),
+    forwardRef(() => AuthModule),
+    forwardRef(()=> PersonsModule),
+    forwardRef(()=> CommunityModule)
   ],
   providers: [UsersService, UsersRepository],
   controllers: [UsersController],

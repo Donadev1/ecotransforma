@@ -8,9 +8,10 @@ import { UsersModule } from './modules/users/users.module';
 import { ActivityRequestModule } from './modules/activity_request/activity_request.module';
 import { VolunteersModule } from './modules/volunteers/volunteers.module';
 import { PersonsModule } from './modules/persons/persons.module';
+import { CommunityModule } from './modules/community/community.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule, PersonsModule],
+  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule, PersonsModule, CommunityModule],
   controllers: [AppController],
   providers: [AppService],
 })
