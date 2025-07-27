@@ -10,7 +10,7 @@ export class CommunityRepository {
             private readonly communityModel: typeof Community
         ){}
     
-        async findAllPersons():Promise <Community[]> {
+        async findAll():Promise <Community[]> {
             return this.communityModel.findAll();
         }
     

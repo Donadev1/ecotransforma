@@ -1,5 +1,5 @@
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
-import { Min } from "sequelize-typescript";
+import { IsInt, IsNotEmpty, IsString, Min } from "class-validator";
+
 
 export class createCommunityDto{
     
