@@ -21,8 +21,8 @@ import { IsArray, IsNotEmpty, IsOptional, IsString, MaxLength } from "class-vali
     @IsString()
     address: string;
 
-    
-    @IsString()
+    @IsArray()
+    @IsString({each:true})
     @IsNotEmpty()
     disponibilidad_dias: string[];
  

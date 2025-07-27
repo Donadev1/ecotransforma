@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   MaxLength,
   IsOptional,
+  IsArray,
 } from 'class-validator';
 import { tipo_lugar } from 'src/types/tipo_lugar';
  
@@ -38,8 +39,8 @@ export default class ActivityRequestDto{
     @IsNotEmpty()
     direccion: string;
     
-    
-    @IsString()
+    @IsArray()
+    @IsString({each: true})
     @IsNotEmpty()
     actividades: string[];
     
