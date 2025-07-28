@@ -1,6 +1,7 @@
 import {  Optional } from "sequelize";
-import { Column, DataType, ForeignKey, Table , Model} from "sequelize-typescript";
+import { Column, DataType, ForeignKey, Table , Model, HasOne} from "sequelize-typescript";
 import { Users } from "./users.model";
+import { Punctuation } from "./punctuation.model";
 
 
 interface PersonAttributtes{
@@ -35,4 +36,8 @@ export class Persons extends Model<PersonAttributtes, PersonCreationAttributtes>
 
     @Column({ type: DataType.STRING(20), allowNull: false })
     declare neighborhood:string
+
+    @HasOne(()=> Punctuation, {foreignKey:'person_id'})
+    declare Puntuation?:Punctuation;
+
 }

@@ -6,11 +6,14 @@ import { PersonsService } from './persons.service';
 import { Users } from 'src/models/users.model';
 import { UsersModule } from '../users/users.module';
 import PersonRepository from './persons.repository';
+import { Punctuation } from 'src/models/punctuation.model';
+import { PunctuationModule } from '../punctuation/punctuation.module';
 
 @Module({
     imports:[
-        SequelizeModule.forFeature([Persons,Users]),
-        forwardRef(()=> UsersModule)
+        SequelizeModule.forFeature([Persons,Users,Punctuation]),
+        forwardRef(()=> UsersModule),
+        forwardRef(()=>PunctuationModule)
         
     ],
     controllers: [PersonsController],

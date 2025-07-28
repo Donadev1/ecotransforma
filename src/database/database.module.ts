@@ -7,6 +7,8 @@ import { Volunteers } from 'src/models/voluntarios.model';
 import { ActivityRequest } from 'src/models/activity-request.model';
 import { Persons } from 'src/models/persons.model';
 import { Community } from 'src/models/community.model';
+import { Punctuation } from 'src/models/punctuation.model';
+import { Companies } from 'src/models/companies.model';
 
 
 
@@ -30,7 +32,7 @@ import { Community } from 'src/models/community.model';
           password: configService.get<string>('database.password'),
           database: configService.get<string>('database.database'),
           autoLoadModels: true,
-          models: [Users, Volunteers, ActivityRequest, Persons, Community],
+          models: [Users, Volunteers, ActivityRequest, Persons, Community,Punctuation,Companies],
           synchronize: false,
         };
       },

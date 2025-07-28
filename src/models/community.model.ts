@@ -1,6 +1,7 @@
 import { Optional } from "sequelize";
-import { Column, DataType, ForeignKey, Table , Model} from "sequelize-typescript";
+import { Column, DataType, ForeignKey, Table , Model, HasOne} from "sequelize-typescript";
 import { Users } from "./users.model";
+import { Punctuation } from "./punctuation.model";
 
 
 interface CommunityAttributtes{
@@ -50,5 +51,8 @@ export class Community extends Model<CommunityAttributtes, CommunityCreationAttr
         allowNull: false
     })
     declare representante: string;
+
+    @HasOne(()=> Punctuation, {foreignKey:'community_id'})
+    declare punctuation?:Punctuation
     
 }

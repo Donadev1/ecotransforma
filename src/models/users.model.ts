@@ -3,6 +3,7 @@ import { Rol } from '../types/rol';
 import { Optional } from 'sequelize';
 import { Persons } from './persons.model';
 import { Community } from './community.model';
+import { Companies } from './companies.model';
 
 
 
@@ -50,7 +51,10 @@ export class Users extends Model<UsersAttributes, UsuarioCreationAttributes> imp
   declare persons?:Persons;
 
   @HasOne(()=> Community, {foreignKey: 'user_id'})
-  declare community?:Community
+  declare community?:Community;
+
+  @HasOne(()=> Companies, {foreignKey: 'user_id'})
+  declare companies?:Companies;
 }
 
 

@@ -9,9 +9,11 @@ import { ActivityRequestModule } from './modules/activity_request/activity_reque
 import { VolunteersModule } from './modules/volunteers/volunteers.module';
 import { PersonsModule } from './modules/persons/persons.module';
 import { CommunityModule } from './modules/community/community.module';
+import { CompaniesModule } from './modules/companies/companies.module';
+import { PunctuationModule } from './modules/punctuation/punctuation.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule, PersonsModule, CommunityModule],
+  imports: [DatabaseModule, AuthModule, AdminModule, UsersModule, ActivityRequestModule, VolunteersModule, PersonsModule, CommunityModule, CompaniesModule, PunctuationModule],
   controllers: [AppController],
   providers: [AppService],
 })
