@@ -36,13 +36,13 @@ export class CommunityController {
                 
                 @UseGuards(JwtAuthGuard, RolesGuard)
                 @Roles('administrador')
-                @Put('id_community')
+                @Put(':id_community')
                 async updateCommunity(@Param('id_community',ParseIntPipe) id_community:number , @Body() update:UpdateCommunityDto){
                     return await this.community.updateCommunity(id_community, update)
                 }
                 @UseGuards(JwtAuthGuard, RolesGuard)
                 @Roles('administrador')
-                @Delete('id_community')
+                @Delete(':id_community')
                 async DeleteCommunity(@Param('id_community', ParseIntPipe) id_community:number){
                     return await this.community.deleteCommunity(id_community)
                 }
