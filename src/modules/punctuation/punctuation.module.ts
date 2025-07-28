@@ -7,6 +7,7 @@ import { PersonsModule } from '../persons/persons.module';
 import { CommunityModule } from '../community/community.module';
 import { Community } from 'src/models/community.model';
 import { Persons } from 'src/models/persons.model';
+import { PunctuationRepository } from './punctuation.repository';
 
 @Module({
   imports:[
@@ -14,7 +15,7 @@ import { Persons } from 'src/models/persons.model';
     forwardRef(()=> PersonsModule),
     forwardRef(()=> CommunityModule)
   ],
-  providers: [PunctuationService],
+  providers: [PunctuationService,PunctuationRepository],
   controllers: [PunctuationController]
 })
 export class PunctuationModule {}
