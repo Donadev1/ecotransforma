@@ -10,7 +10,7 @@ export class createCommunityDto{
 
     @IsNotEmpty()
     @IsString()
-    name_community:string;
+    name_comumnity:string;
 
     @IsNotEmpty()
     @IsString()

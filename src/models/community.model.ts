@@ -6,7 +6,7 @@ import { Users } from "./users.model";
 interface CommunityAttributtes{
     id_community:number,
     user_id:number,
-    name_community:string;
+    name_comumnity:string;
     ubicacion:string
     representante:string
 }
@@ -37,7 +37,7 @@ export class Community extends Model<CommunityAttributtes, CommunityCreationAttr
         type: DataType.STRING,
         allowNull: false
     })
-    declare name_community: string;
+    declare name_comumnity: string;
 
     @Column({
         type: DataType.STRING,

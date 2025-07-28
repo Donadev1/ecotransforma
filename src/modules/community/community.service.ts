@@ -25,7 +25,7 @@ export class CommunityService {
         async CreateCommunity(create:createCommunityDto):Promise<Community>{
            try {
    
-               const Exist = await this.findnameCommunity(create.name_community)
+               const Exist = await this.findnameCommunity(create.name_comumnity)
                
                if (Exist) {
                    throw new NotFoundException(`ya hay una comunidad registrado con este correo`);

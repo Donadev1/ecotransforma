@@ -18,9 +18,9 @@ export class CommunityRepository {
             return this.communityModel.findByPk(id_community);
         }
     
-        async findbyName(name_community:string):Promise<Community|null>{
+        async findbyName(name_comumnity:string):Promise<Community|null>{
             return this.communityModel.findOne({
-                where:{name_community}
+                where:{name_comumnity}
             })
         }
 
