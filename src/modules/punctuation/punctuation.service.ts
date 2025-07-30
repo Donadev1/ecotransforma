@@ -109,32 +109,5 @@ export class PunctuationService {
         return { message: `Punctuation with ID ${id_punctuation} deleted successfully` };
     }
 
-    // Métodos para estadísticas
-    async getPersonStats(person_id: number): Promise<{ totalPoints: number; totalBudget: number; punctuations: Punctuation[] }> {
-        const [totalPoints, totalBudget, punctuations] = await Promise.all([
-            this.punctuationRepository.getTotalPointsByPersonId(person_id),
-            this.punctuationRepository.getTotalBudgetByPersonId(person_id),
-            this.punctuationRepository.findByPersonId(person_id)
-        ]);
-
-        return {
-            totalPoints,
-            totalBudget,
-            punctuations
-        };
-    }
-
-    async getCommunityStats(community_id: number): Promise<{ totalPoints: number; totalBudget: number; punctuations: Punctuation[] }> {
-        const [totalPoints, totalBudget, punctuations] = await Promise.all([
-            this.punctuationRepository.getTotalPointsByCommunityId(community_id),
-            this.punctuationRepository.getTotalBudgetByCommunityId(community_id),
-            this.punctuationRepository.findByCommunityId(community_id)
-        ]);
-
-        return {
-            totalPoints,
-            totalBudget,
-            punctuations
-        };
-    }
+   
 }

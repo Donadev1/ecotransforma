@@ -19,8 +19,8 @@ export class AdminService {
 
     return await this.punctuationService.createPunctuation(dto);
   }
-
  
+  
   calculateFromAmount(dto: CalculatePointsDto) {
     const porcentajePresupuesto = 0.10;
     const valorPorPunto = 1000;
@@ -30,4 +30,5 @@ export class AdminService {
 
     return { presupuesto, puntos };
   }
+
 }
