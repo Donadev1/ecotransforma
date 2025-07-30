@@ -16,6 +16,7 @@ import { PunctuationRepository } from './punctuation.repository';
     forwardRef(()=> CommunityModule)
   ],
   providers: [PunctuationService,PunctuationRepository],
-  controllers: [PunctuationController]
+  controllers: [PunctuationController],
+  exports:[PunctuationService]
 })
 export class PunctuationModule {}

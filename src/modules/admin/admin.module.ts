@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AdminController } from './admin.controller';
 import { AdminService } from './admin.service';
+import { PunctuationModule } from '../punctuation/punctuation.module';
+
+
 
 @Module({
+  imports:[PunctuationModule],
   controllers: [AdminController],
   providers: [AdminService],
 })
